@@ -1,6 +1,6 @@
 const primaryMenu = document.querySelector("#siteMenu .navbar-nav");
 if (primaryMenu) {
-  const menuOrder = ["index.html", "masters.html", "catalog.html", "contacts.html"];
+  const menuOrder = ["index.html", "masters.html", "catalog.html", "shop.html", "contacts.html"];
   const menuItems = [...primaryMenu.children];
   menuItems.sort((firstItem, secondItem) => {
     const firstPage = new URL(firstItem.querySelector("a").href).pathname.split("/").pop();
@@ -26,6 +26,32 @@ const services = {
   "men-style": { title: "Мужская укладка", price: "от 1 300 ₽", duration: "30–45 минут", image: "images/men-styling.png", description: "Форма и текстура на каждый день или к событию.", details: "Мастер подберёт средство и способ укладки под длину и структуру волос, покажет, как повторить результат дома." },
   "repair": { title: "Восстановление волос", price: "от 3 200 ₽", duration: "60–90 минут", image: "images/hair-repair.png", description: "Питательный уход для сухих и повреждённых волос.", details: "После консультации мастер подберёт состав и этапы ухода с учётом состояния волос. Процедура направлена на мягкость и гладкость." },
   "scalp": { title: "Массаж головы", price: "от 1 600 ₽", duration: "30–45 минут", image: "images/scalp-massage.png", description: "Мягкий массаж кожи головы во время ухода.", details: "Процедура включает очищение и спокойный массаж у мойки. Подходит, когда хочется выделить время на отдых и уход." }
+};
+
+const showSiteToast = (message, title = "Новый образ") => {
+  let region = document.querySelector("#site-toast-region");
+  if (!region) {
+    region = document.createElement("div");
+    region.id = "site-toast-region";
+    region.className = "toast-container position-fixed bottom-0 start-50 translate-middle-x p-3";
+    region.setAttribute("aria-live", "polite");
+    region.setAttribute("aria-atomic", "true");
+    document.body.append(region);
+  }
+  const toast = document.createElement("div");
+  toast.className = "toast site-toast";
+  toast.setAttribute("role", "status");
+  toast.innerHTML = '<div class="toast-header"><strong class="me-auto"></strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Закрыть"></button></div><div class="toast-body"></div>';
+  toast.querySelector("strong").textContent = title;
+  toast.querySelector(".toast-body").textContent = message;
+  region.append(toast);
+  toast.addEventListener("hidden.bs.toast", () => toast.remove(), { once: true });
+  bootstrap.Toast.getOrCreateInstance(toast, { delay: 4500 }).show();
+};
+
+const formatDate = (isoDate) => {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(isoDate || "");
+  return match ? match[3] + "." + match[2] + "." + match[1] : isoDate;
 };
 
 const catalogFilters = document.querySelectorAll("#serviceFilters [data-category]");
@@ -78,6 +104,42 @@ if (bookingModal) {
     bookingModal.querySelector("[data-modal-price]").textContent = item.price;
     bookingModal.querySelector("[data-modal-link]").href = "order.html?service=" + encodeURIComponent(key);
   });
+}
+
+const galleryModal = document.querySelector("#galleryModal");
+if (galleryModal) {
+  const galleryItems = [...document.querySelectorAll("[data-gallery-index] img")].map((image) => ({ src: image.src, alt: image.alt }));
+  const galleryImage = galleryModal.querySelector("[data-gallery-image]");
+  const galleryCaption = galleryModal.querySelector("[data-gallery-caption]");
+  const galleryCounter = galleryModal.querySelector("[data-gallery-counter]");
+  let galleryIndex = 0;
+  const showGalleryItem = (index) => {
+    galleryIndex = (index + galleryItems.length) % galleryItems.length;
+    const item = galleryItems[galleryIndex];
+    galleryImage.src = item.src;
+    galleryImage.alt = item.alt;
+    galleryCaption.textContent = item.alt;
+    galleryCounter.textContent = (galleryIndex + 1) + " из " + galleryItems.length;
+  };
+  galleryModal.addEventListener("show.bs.modal", (event) => showGalleryItem(Number(event.relatedTarget?.dataset.galleryIndex || 0)));
+  galleryModal.querySelector("[data-gallery-prev]").addEventListener("click", () => showGalleryItem(galleryIndex - 1));
+  galleryModal.querySelector("[data-gallery-next]").addEventListener("click", () => showGalleryItem(galleryIndex + 1));
+}
+
+const shopButtons = document.querySelectorAll("[data-shop-product]");
+if (shopButtons.length) {
+  const cartCount = document.querySelector("[data-cart-count]");
+  const cartStorageKey = "novyi-obraz-cart-count";
+  let count = 0;
+  try { count = Number(localStorage.getItem(cartStorageKey) || 0); } catch { count = 0; }
+  if (!Number.isFinite(count) || count < 0) count = 0;
+  cartCount.textContent = count;
+  shopButtons.forEach((button) => button.addEventListener("click", () => {
+    count += 1;
+    cartCount.textContent = count;
+    try { localStorage.setItem(cartStorageKey, String(count)); } catch { /* Cart still works for this visit. */ }
+    showSiteToast(button.dataset.shopProduct + " добавлен в корзину.", "Магазин ухода");
+  }));
 }
 
 const reviewForm = document.querySelector("#review-form");
@@ -248,12 +310,12 @@ if (orderForm) {
     items.forEach((item) => {
       const li = document.createElement("li");
       const label = document.createElement("span");
-      label.textContent = item.date + " в " + item.time + " — " + (services[item.service]?.title || item.service) + " (" + item.name + "). ";
+      label.textContent = formatDate(item.date) + " в " + item.time + " — " + (services[item.service]?.title || item.service) + " (" + item.name + "). ";
       const remove = document.createElement("button");
       remove.type = "button";
       remove.className = "btn btn-sm btn-outline-dark";
       remove.textContent = "Удалить";
-      remove.setAttribute("aria-label", "Удалить запись на " + item.date + " в " + item.time);
+      remove.setAttribute("aria-label", "Удалить запись на " + formatDate(item.date) + " в " + item.time);
       remove.addEventListener("click", () => {
         if (writeBookings(readBookings().filter((saved) => saved.id !== item.id))) {
           renderBookings();
@@ -287,7 +349,8 @@ if (orderForm) {
       showAlert("Не удалось сохранить запись. Попробуйте ещё раз.", "danger");
       return;
     }
-    showAlert("Вы выбрали " + booking.date + " в " + booking.time + ". Запись добавлена в раздел «Мои записи».", "success");
+    showAlert("Вы выбрали " + formatDate(booking.date) + " в " + booking.time + ". Запись добавлена в раздел «Мои записи».", "success");
+    showSiteToast("Запись на " + formatDate(booking.date) + " в " + booking.time + " успешно сохранена.", "Запись подтверждена");
     orderForm.reset();
     orderForm.classList.remove("was-validated");
     dateInput.min = day(1);
@@ -312,7 +375,7 @@ document.querySelectorAll(".site-navbar .nav-link").forEach((link) => {
 });
 
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  const moving = [...document.querySelectorAll("main section h2, main section .section-lead, main section .service-card, main section .benefit, main section .gallery-photo, main section .mini-gallery img, main section .map-frame, main section .price-list, main section .story-copy, main section .team-card, main section .master-profile")];
+  const moving = [...document.querySelectorAll("main section h2, main section .section-lead, main section .service-card, main section .product-card, main section .benefit, main section .gallery-photo, main section .mini-gallery img, main section .map-frame, main section .price-list, main section .story-copy, main section .team-card, main section .master-profile")];
   moving.forEach((element, index) => {
     element.classList.add("reveal");
     element.style.transitionDelay = (index % 3) * 75 + "ms";
@@ -352,4 +415,49 @@ window.addEventListener("scroll", toggleScrollTopButton, { passive: true });
 toggleScrollTopButton();
 scrollTopButton.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+});
+
+const chatLauncher = document.createElement("button");
+chatLauncher.type = "button";
+chatLauncher.className = "chat-launcher";
+chatLauncher.setAttribute("aria-expanded", "false");
+chatLauncher.setAttribute("aria-controls", "consultant-chat");
+chatLauncher.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3 1.5-5A7 7 0 0 1 3 13V8a5 5 0 0 1 5-5h9a4 4 0 0 1 4 4Z"/></svg><span>Чат</span>';
+
+const chatPanel = document.createElement("section");
+chatPanel.id = "consultant-chat";
+chatPanel.className = "chat-panel";
+chatPanel.hidden = true;
+chatPanel.setAttribute("aria-label", "Чат с консультантом");
+chatPanel.innerHTML = '<div class="chat-panel__header"><div><strong>Консультант</strong><span>Обычно отвечает сразу</span></div><button type="button" class="chat-close" aria-label="Закрыть чат"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="chat-log" aria-live="polite"><p class="chat-message chat-message--bot">Здравствуйте! Помогу выбрать услугу, средство или удобное время.</p></div><form class="chat-form"><label class="visually-hidden" for="chat-message">Сообщение</label><input class="form-control" id="chat-message" type="text" maxlength="300" placeholder="Напишите вопрос" required><button class="btn btn-salon" type="submit">Отправить</button></form>';
+document.body.append(chatLauncher, chatPanel);
+
+const setChatOpen = (open) => {
+  chatPanel.hidden = !open;
+  chatLauncher.setAttribute("aria-expanded", String(open));
+  document.body.classList.toggle("chat-open", open);
+  if (open) chatPanel.querySelector("input").focus();
+};
+chatLauncher.addEventListener("click", () => setChatOpen(chatPanel.hidden));
+chatPanel.querySelector(".chat-close").addEventListener("click", () => setChatOpen(false));
+chatPanel.querySelector(".chat-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const input = chatPanel.querySelector("input");
+  const question = input.value.trim();
+  if (!question) return;
+  const log = chatPanel.querySelector(".chat-log");
+  const userMessage = document.createElement("p");
+  userMessage.className = "chat-message chat-message--user";
+  userMessage.textContent = question;
+  log.append(userMessage);
+  input.value = "";
+  const answer = document.createElement("p");
+  answer.className = "chat-message chat-message--bot";
+  const normalized = question.toLowerCase();
+  if (normalized.includes("цен") || normalized.includes("стоим")) answer.textContent = "Цены указаны в разделе «Услуги». Итоговую стоимость мастер уточнит до начала работы.";
+  else if (normalized.includes("запис") || normalized.includes("время")) answer.textContent = "Откройте форму записи — там показаны доступные даты и время.";
+  else if (normalized.includes("уход") || normalized.includes("средств")) answer.textContent = "Для точного подбора ухода расскажите мастеру о типе волос и желаемом результате.";
+  else answer.textContent = "Спасибо за вопрос! Оставьте заявку на сайте или позвоните по номеру +7 (495) 000-22-10.";
+  log.append(answer);
+  log.scrollTop = log.scrollHeight;
 });

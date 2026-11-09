@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/custom.css?v=footer-layout-4">
+  <link rel="stylesheet" href="css/custom.css?v=toast-bottom-10">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -23,6 +23,7 @@
             <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
             <li class="nav-item"><a class="nav-link" href="masters.html">Мастера</a></li>
             <li class="nav-item"><a class="nav-link" href="catalog.html">Услуги</a></li>
+            <li class="nav-item"><a class="nav-link" href="shop.html">Магазин</a></li>
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="contacts.html">О студии</a></li>
             <li class="nav-item"><a class="nav-link" href="contacts.html#location-title">Контакты</a></li>
           </ul>
@@ -112,14 +113,22 @@
       </div>
     </section>
     <section class="container section-space" aria-labelledby="location-title"><div class="row g-5 align-items-center"><div class="col-12 col-lg-4"><h2 class="section-title mb-4" id="location-title">Контакты</h2><address class="studio-contacts mb-4"><p><span>Адрес</span><strong>Москва, улица Зеркальная, 10</strong></p><p><span>Телефон</span><strong>+7 (495) 000-22-10</strong></p><p><span>Электронная почта</span><strong>hello@novyi-obraz.example</strong></p><p><span>График работы</span><strong>Ежедневно с 10:00 до 22:00</strong></p></address><a class="btn btn-salon-outline mt-2" href="https://yandex.ru/maps/?ll=37.617635%2C55.755814&amp;z=15&amp;pt=37.617635%2C55.755814%2Cpm2rdm" target="_blank" rel="noopener noreferrer">Открыть на Яндекс Картах</a></div><div class="col-12 col-lg-8"><div class="map-frame"><iframe src="https://yandex.ru/map-widget/v1/?ll=37.617635%2C55.755814&amp;z=15&amp;pt=37.617635%2C55.755814%2Cpm2rdm" loading="lazy" title="Карта центра Москвы на Яндекс Картах" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></div></section>
-    <section class="container section-space-sm" aria-labelledby="mood-title">
-      <h2 class="section-title mb-4" id="mood-title">Настроение студии</h2>
-      <div class="row g-4 mini-gallery">
-        <div class="col-12 col-md-4"><figure><img src="images/bob.webp" alt="Женская стрижка с чёткой формой" loading="lazy" width="1024" height="1280"><figcaption>Форма</figcaption></figure></div>
-        <div class="col-12 col-md-4"><figure><img src="images/beard.webp" alt="Мастер оформляет бороду" loading="lazy" width="1024" height="1280"><figcaption>Детали</figcaption></figure></div>
-        <div class="col-12 col-md-4"><figure><img src="images/color.webp" alt="Окрашенные длинные волосы" loading="lazy" width="1024" height="1280"><figcaption>Цвет</figcaption></figure></div>
+    <section class="container section-space" aria-labelledby="interior-title">
+      <div class="row align-items-end g-4 mb-4">
+        <div class="col-12 col-lg-7"><h2 class="section-title mb-0" id="interior-title">Интерьер студии</h2></div>
+        <div class="col-12 col-lg-5"><p class="section-lead mb-0">Светлое и спокойное пространство для стрижек, окрашивания и ухода. Нажмите на фотографию, чтобы рассмотреть интерьер крупнее.</p></div>
       </div>
-
+      <div class="studio-interior-gallery salon-gallery">
+        <button class="gallery-button studio-interior-gallery__main" type="button" data-gallery-index="0" data-bs-toggle="modal" data-bs-target="#galleryModal" aria-label="Открыть фотографию основного зала">
+          <img class="gallery-photo" src="images/salon.webp" alt="Пустой основной зал парикмахерской с креслами и зеркалами" loading="lazy" width="1536" height="1024">
+        </button>
+        <button class="gallery-button" type="button" data-gallery-index="1" data-bs-toggle="modal" data-bs-target="#galleryModal" aria-label="Открыть фотографию зоны ожидания">
+          <img class="gallery-photo" src="images/salon-reception.png" alt="Пустая зона ожидания и стойка администратора в тёплых тонах" loading="lazy" width="1536" height="1024">
+        </button>
+        <button class="gallery-button" type="button" data-gallery-index="2" data-bs-toggle="modal" data-bs-target="#galleryModal" aria-label="Открыть фотографию рабочих мест">
+          <img class="gallery-photo" src="images/salon-stations.png" alt="Пустая рабочая зона парикмахерской с зеркалами и креслами" loading="lazy" width="1536" height="1024">
+        </button>
+      </div>
     </section>
   </main>
   <footer class="site-footer py-5">
@@ -145,6 +154,15 @@
       <p class="footer-copy footer-note mb-0">© 2026 Новый образ. Все права защищены.</p>
     </div>
   </footer>
+  <div class="modal fade gallery-modal" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header"><h2 class="modal-title fs-3" id="galleryModalTitle">Интерьер студии</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button></div>
+        <div class="modal-body"><img data-gallery-image src="images/salon.webp" alt="Пустой основной зал парикмахерской с креслами и зеркалами" width="1536" height="1024"><p class="gallery-caption mb-0" data-gallery-caption>Пустой основной зал парикмахерской с креслами и зеркалами</p></div>
+        <div class="modal-footer justify-content-between"><button class="btn btn-salon-outline" type="button" data-gallery-prev>Предыдущее фото</button><span data-gallery-counter>1 из 3</span><button class="btn btn-salon-dark" type="button" data-gallery-next>Следующее фото</button></div>
+      </div>
+    </div>
+  </div>
   <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -159,6 +177,6 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js?v=nav-order-2"></script>
+  <script src="js/main.js?v=toast-bottom-10"></script>
 </body>
 </html>
