@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Демонстрационная запись на услуги женской и мужской парикмахерской «Новый образ»: дата, время и услуга.">
+  <meta name="description" content="Запись на услуги женской и мужской парикмахерской «Новый образ»: дата, время и услуга.">
   <title>Запись — Новый образ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
     <div class="container">
       <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-1">
         <a class="site-brand" href="index.html">Новый образ</a>
-        <p class="site-header-note mb-0">Женские и мужские стрижки · учебный проект</p>
+        <p class="site-header-note mb-0">Стрижки и окрашивание для женщин и мужчин</p>
       </div>
     </div>
   </header>
@@ -37,17 +37,17 @@
     </div>
   </nav>
   <main id="main">
-    <section class="page-hero"><div class="container"><nav aria-label="Хлебные крошки"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Главная</a></li><li class="breadcrumb-item active" aria-current="page">Запись</li></ol></nav><h1 class="mb-3">Записаться</h1><p class="section-lead mb-0">Выберите услугу, дату и свободное время. Это учебная форма: данные остаются только в вашем браузере.</p></div></section>
+    <section class="page-hero"><div class="container"><nav aria-label="Хлебные крошки"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Главная</a></li><li class="breadcrumb-item active" aria-current="page">Запись</li></ol></nav><h1 class="mb-3">Записаться</h1><p class="section-lead mb-0">Выберите услугу, дату и свободное время. Данные остаются только в вашем браузере и не отправляются в салон.</p></div></section>
     <section class="container section-space" aria-labelledby="form-title"><div class="row g-5"><div class="col-12 col-lg-7"><h2 class="section-title mb-4" id="form-title">Ваш визит</h2><div id="booking-alert" class="alert" role="status" aria-live="polite" hidden></div>
       <form id="booking-form" novalidate>
         <div class="row g-4">
           <div class="col-12 col-md-6"><label class="form-label" for="client-name">Как к вам обращаться *</label><input class="form-control" id="client-name" name="name" type="text" autocomplete="given-name" minlength="2" maxlength="50" required><div class="invalid-feedback">Введите имя: минимум 2 символа.</div></div>
-          <div class="col-12 col-md-6"><label class="form-label" for="phone">Телефон для демонстрации *</label><div class="input-group has-validation"><span class="input-group-text">+7</span><input class="form-control" id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" pattern="[0-9]{10}" maxlength="10" placeholder="9991234567" aria-describedby="phone-help" required><div class="invalid-feedback">Введите 10 цифр после +7.</div></div><div class="form-text" id="phone-help">Номер проверяется, но не сохраняется и никуда не отправляется.</div></div>
+          <div class="col-12 col-md-6"><label class="form-label" for="phone">Телефон *</label><div class="input-group has-validation"><span class="input-group-text">+7</span><input class="form-control" id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" pattern="[0-9]{10}" maxlength="10" placeholder="9991234567" aria-describedby="phone-help" required><div class="invalid-feedback">Введите 10 цифр после +7.</div></div><div class="form-text" id="phone-help">Номер проверяется, но не сохраняется и никуда не отправляется.</div></div>
           <div class="col-12"><label class="form-label" for="service">Услуга *</label><select class="form-select" id="service" name="service" required><option value="">Выберите услугу</option><option value="women-cut">Женская стрижка</option><option value="men-cut">Мужская стрижка</option><option value="color">Окрашивание</option><option value="style">Укладка</option><option value="beard">Оформление бороды</option><option value="care">Уход для волос</option></select><div class="invalid-feedback">Выберите услугу.</div></div>
           <div class="col-12 col-md-6"><label class="form-label" for="visit-date">Дата *</label><input class="form-control" id="visit-date" name="date" type="date" required><div class="invalid-feedback">Выберите дату в ближайшие 60 дней.</div></div>
           <div class="col-12 col-md-6"><label class="form-label" for="visit-time">Время *</label><select class="form-select" id="visit-time" name="time" required><option value="">Сначала выберите дату</option></select><div class="invalid-feedback">Выберите свободное время.</div></div>
-          <div class="col-12"><label class="form-label" for="comment">Пожелания</label><textarea class="form-control" id="comment" name="comment" rows="3" maxlength="300" placeholder="Например, желаемая длина или особенности волос"></textarea><div class="form-text">Комментарий не сохраняется в демонстрационной записи.</div></div>
-          <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" id="demo-consent" required><label class="form-check-label" for="demo-consent">Понимаю, что это учебная запись и салон не получит заявку *</label><div class="invalid-feedback">Подтвердите условие демонстрационной записи.</div></div></div>
+          <div class="col-12"><label class="form-label" for="comment">Пожелания</label><textarea class="form-control" id="comment" name="comment" rows="3" maxlength="300" placeholder="Например, желаемая длина или особенности волос"></textarea><div class="form-text">Комментарий не сохраняется.</div></div>
+          <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" id="demo-consent" required><label class="form-check-label" for="demo-consent">Понимаю, что заявка сохраняется только в моём браузере и не отправляется в салон *</label><div class="invalid-feedback">Подтвердите условие сохранения записи.</div></div></div>
           <div class="col-12"><button class="btn btn-salon-dark" type="submit">Сохранить запись</button></div>
         </div>
       </form>
@@ -60,7 +60,7 @@
         <div class="col-12 col-md-4"><figure><a href="product.html?service=men-cut"><img src="images/men-cut.webp" alt="Иллюстрация мужской стрижки" loading="lazy" width="1024" height="1280"><figcaption>Мужская стрижка →</figcaption></a></figure></div>
         <div class="col-12 col-md-4"><figure><a href="product.html?service=color"><img src="images/color.webp" alt="Иллюстрация окрашивания волос" loading="lazy" width="1024" height="1280"><figcaption>Окрашивание →</figcaption></a></figure></div>
       </div>
-      <p class="demo-note">Изображения созданы для учебного проекта и не показывают работы действующего салона.</p>
+      <p class="demo-note">Изображения иллюстративные и не являются фотографиями работ салона.</p>
     </section>
   </main>
   <footer class="site-footer py-5 mt-5">
@@ -68,7 +68,7 @@
       <div class="row g-4">
         <div class="col-12 col-md-6 col-lg-4">
           <a class="footer-brand" href="index.html">Новый образ</a>
-          <p class="footer-copy mb-0">Женские и мужские услуги в одном пространстве. Учебный проект парикмахерской.</p>
+          <p class="footer-copy mb-0">Женские и мужские услуги в одном пространстве.</p>
         </div>
         <div class="col-12 col-sm-6 col-lg-2">
           <h2 class="h5 mb-3">Навигация</h2>
@@ -84,17 +84,17 @@
           <h2 class="h5 mb-3">Связаться</h2>
           <address class="footer-copy mb-0">
             <a href="order.html">Форма записи</a>
-            <span>Учебное расписание: ежедневно, 10:00–21:00</span>
-            <span>Контакты реального салона не указаны</span>
+            <span>График работы: уточняется</span>
+            <span>Запись доступна на сайте</span>
           </address>
         </div>
         <div class="col-12 col-lg-3">
           <h2 class="h5 mb-3">Новый образ</h2>
-          <p class="footer-copy mb-0">Москва · точка на карте демонстрационная<br>Женский и мужской зал<br>Данные заявки сохраняются только в браузере</p>
+          <p class="footer-copy mb-0">Женский и мужской зал<br>Стрижки, окрашивание и уход<br>Запись сохраняется только в браузере</p>
           <a class="btn btn-salon footer-action" href="order.html">Записаться</a>
         </div>
       </div>
-      <p class="footer-copy footer-note mb-0">© 2026 Новый образ. Учебный проект.</p>
+      <p class="footer-copy footer-note mb-0">© 2026 Новый образ.</p>
     </div>
   </footer>
   <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalTitle" aria-hidden="true">
@@ -104,7 +104,7 @@
         <div class="modal-body">
           <p class="mb-2">Вы выбрали: <strong data-modal-service>Женская стрижка</strong></p>
           <p class="mb-3">Стоимость: <span data-modal-price>от 2 400 ₽</span></p>
-          <div class="alert alert-info mb-0" role="note">Запись учебная: подтверждение сохраняется только в этом браузере.</div>
+          <div class="alert alert-info mb-0" role="note">Подтверждение сохраняется только в этом браузере. Заявка не отправляется в салон.</div>
         </div>
         <div class="modal-footer"><button class="btn btn-salon-outline" type="button" data-bs-dismiss="modal">Вернуться</button><a class="btn btn-salon" data-modal-link href="order.html?service=women-cut">Выбрать время</a></div>
       </div>
