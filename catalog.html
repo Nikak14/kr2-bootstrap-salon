@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/custom.css?v=footer-layout-4">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -21,9 +21,10 @@
         <div class="collapse navbar-collapse" id="siteMenu">
           <ul class="navbar-nav ms-lg-auto me-lg-4 mb-3 mb-lg-0 gap-lg-3">
             <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="masters.html">Мастера</a></li>
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="catalog.html">Услуги</a></li>
-            <li class="nav-item"><a class="nav-link" href="product.html">Об услуге</a></li>
             <li class="nav-item"><a class="nav-link" href="contacts.html">О студии</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html#location-title">Контакты</a></li>
           </ul>
           <a class="btn btn-salon" href="order.html">Записаться</a>
         </div>
@@ -35,58 +36,201 @@
     <section class="container section-space" aria-labelledby="choose-title">
       <h2 class="section-title mb-4" id="choose-title">Выберите направление</h2>
       <div class="alert alert-info mb-5" role="note">Стоимость указана «от». Окончательная цена зависит от длины волос и выбранной техники.</div>
-      <ul class="nav nav-pills catalog-filter mb-4" id="serviceTabs" role="tablist">
-        <li class="nav-item" role="presentation"><button class="nav-link active" id="women-tab" data-bs-toggle="pill" data-bs-target="#women" type="button" role="tab" aria-controls="women" aria-selected="true">Женские услуги</button></li>
-        <li class="nav-item" role="presentation"><button class="nav-link" id="men-tab" data-bs-toggle="pill" data-bs-target="#men" type="button" role="tab" aria-controls="men" aria-selected="false">Мужские услуги</button></li>
-        <li class="nav-item" role="presentation"><button class="nav-link" id="care-tab" data-bs-toggle="pill" data-bs-target="#care" type="button" role="tab" aria-controls="care" aria-selected="false">Уход</button></li>
+      <ul class="nav nav-pills catalog-filter mb-4" id="serviceFilters" aria-label="Фильтр услуг">
+        <li class="nav-item"><button class="nav-link" type="button" data-category="women" aria-pressed="false" aria-controls="women">Женские услуги</button></li>
+        <li class="nav-item"><button class="nav-link" type="button" data-category="men" aria-pressed="false" aria-controls="men">Мужские услуги</button></li>
+        <li class="nav-item"><button class="nav-link" type="button" data-category="care" aria-pressed="false" aria-controls="care">Уход</button></li>
       </ul>
-      <div class="tab-content" id="serviceTabsContent">
-      <div class="tab-pane fade show active" id="women" role="tabpanel" aria-labelledby="women-tab" tabindex="0"><h2 class="visually-hidden">Женские услуги</h2><div class="row g-4">            <div class="col-12 col-md-6 col-lg-4"><article class="card service-card"><img src="images/women-cut.webp" class="card-img-top" alt="услуги «Женская стрижка»" loading="lazy" width="1024" height="1280"><div class="card-body d-flex flex-column"><div class="mb-3"><span class="badge badge-salon">Женский зал</span></div><h3 class="card-title">Женская стрижка</h3><p class="card-text">Форма с учётом структуры волос, мытьё и укладка.</p><p class="service-meta mt-auto">от 2 400 ₽</p><div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=women-cut">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="women-cut">Записаться</button></div></div></article></div>
-            <div class="col-12 col-md-6 col-lg-4"><article class="card service-card"><img src="images/color.webp" class="card-img-top" alt="услуги «Окрашивание»" loading="lazy" width="1024" height="1280"><div class="card-body d-flex flex-column"><div class="mb-3"><span class="badge badge-salon">Цвет</span></div><h3 class="card-title">Окрашивание</h3><p class="card-text">Оттенок и техника под ваш запрос.</p><p class="service-meta mt-auto">от 5 200 ₽</p><div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=color">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="color">Записаться</button></div></div></article></div>
-            <div class="col-12 col-md-6 col-lg-4"><article class="card service-card"><img src="images/bob.webp" class="card-img-top" alt="услуги «Укладка»" loading="lazy" width="1024" height="1280"><div class="card-body d-flex flex-column"><div class="mb-3"><span class="badge badge-salon">Женский зал</span></div><h3 class="card-title">Укладка</h3><p class="card-text">Объём, текстура и фиксация под событие.</p><p class="service-meta mt-auto">от 1 700 ₽</p><div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=style">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="style">Записаться</button></div></div></article></div></div></div>
-      <div class="tab-pane fade " id="men" role="tabpanel" aria-labelledby="men-tab" tabindex="0"><h2 class="visually-hidden">Мужские услуги</h2><div class="row g-4">            <div class="col-12 col-md-6 col-lg-4"><article class="card service-card"><img src="images/men-cut.webp" class="card-img-top" alt="услуги «Мужская стрижка»" loading="lazy" width="1024" height="1280"><div class="card-body d-flex flex-column"><div class="mb-3"><span class="badge badge-salon">Мужской зал</span></div><h3 class="card-title">Мужская стрижка</h3><p class="card-text">Аккуратная форма от классики до текстуры.</p><p class="service-meta mt-auto">от 1 800 ₽</p><div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=men-cut">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="men-cut">Записаться</button></div></div></article></div>
-            <div class="col-12 col-md-6 col-lg-4"><article class="card service-card"><img src="images/beard.webp" class="card-img-top" alt="Оформление бороды триммером" loading="lazy" width="1024" height="1280"><div class="card-body d-flex flex-column"><div class="mb-3"><span class="badge badge-salon">Мужской зал</span></div><h3 class="card-title">Оформление бороды</h3><p class="card-text">Чистый контур и подходящая длина.</p><p class="service-meta mt-auto">от 1 200 ₽</p><div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=beard">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="beard">Записаться</button></div></div></article></div></div></div>
-      <div class="tab-pane fade " id="care" role="tabpanel" aria-labelledby="care-tab" tabindex="0"><h2 class="visually-hidden">Уход</h2><div class="row g-4">            <div class="col-12 col-md-6 col-lg-4"><article class="card service-card"><img src="images/salon.webp" class="card-img-top" alt="услуги «Уход для волос»" loading="lazy" width="1024" height="1280"><div class="card-body d-flex flex-column"><div class="mb-3"><span class="badge badge-salon">Уход</span></div><h3 class="card-title">Уход для волос</h3><p class="card-text">Процедура после консультации о состоянии волос.</p><p class="service-meta mt-auto">от 2 000 ₽</p><div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=care">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="care">Записаться</button></div></div></article></div></div></div>
+      <div class="catalog-groups">
+        <section class="catalog-group" id="women" aria-labelledby="women-title">
+          <h2 class="catalog-group-title" id="women-title">Женские услуги</h2>
+          <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/women-cut.webp" class="card-img-top" alt="Мастер стрижёт волосы клиентке" loading="lazy" width="1024" height="1280">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Женский зал</span></div>
+                <h3 class="card-title">Женская стрижка</h3>
+                <p class="card-text">Форма с учётом структуры волос, мытьё и укладка.</p>
+                <p class="service-meta mt-auto">от 2 400 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=women-cut">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="women-cut">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/color.webp" class="card-img-top" alt="Женщина с окрашенными волосами" loading="lazy" width="1024" height="1280">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Женский зал</span></div>
+                <h3 class="card-title">Окрашивание</h3>
+                <p class="card-text">Оттенок и техника под ваш запрос.</p>
+                <p class="service-meta mt-auto">от 5 200 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=color">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="color">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/bob.webp" class="card-img-top" alt="Укладка волос в парикмахерской" loading="lazy" width="1024" height="1280">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Женский зал</span></div>
+                <h3 class="card-title">Укладка</h3>
+                <p class="card-text">Объём, текстура и фиксация под событие.</p>
+                <p class="service-meta mt-auto">от 1 700 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=style">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="style">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/fringe.png" class="card-img-top" alt="Мастер подстригает чёлку клиентке" loading="lazy" width="1122" height="1402">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Женский зал</span></div>
+                <h3 class="card-title">Стрижка чёлки</h3>
+                <p class="card-text">Обновим длину и форму чёлки без полной стрижки.</p>
+                <p class="service-meta mt-auto">от 900 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=fringe">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="fringe">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/toning.png" class="card-img-top" alt="Мастер наносит оттеночный состав на волосы" loading="lazy" width="1122" height="1402">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Женский зал</span></div>
+                <h3 class="card-title">Тонирование</h3>
+                <p class="card-text">Освежим оттенок и добавим волосам блеск.</p>
+                <p class="service-meta mt-auto">от 3 500 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=toning">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="toning">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          </div>
+        </section>
+        <section class="catalog-group" id="men" aria-labelledby="men-title">
+          <h2 class="catalog-group-title" id="men-title">Мужские услуги</h2>
+          <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/men-cut.webp" class="card-img-top" alt="Мастер стрижёт мужчину" loading="lazy" width="1024" height="1280">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Мужской зал</span></div>
+                <h3 class="card-title">Мужская стрижка</h3>
+                <p class="card-text">Аккуратная форма от классики до текстуры.</p>
+                <p class="service-meta mt-auto">от 1 800 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=men-cut">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="men-cut">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/beard.webp" class="card-img-top" alt="Мастер оформляет бороду триммером" loading="lazy" width="1024" height="1280">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Мужской зал</span></div>
+                <h3 class="card-title">Оформление бороды</h3>
+                <p class="card-text">Чистый контур и подходящая длина.</p>
+                <p class="service-meta mt-auto">от 1 200 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=beard">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="beard">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/clipper-cut.png" class="card-img-top" alt="Мастер стрижёт мужчину машинкой" loading="lazy" width="1122" height="1402">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Мужской зал</span></div>
+                <h3 class="card-title">Стрижка машинкой</h3>
+                <p class="card-text">Ровная длина и аккуратный переход.</p>
+                <p class="service-meta mt-auto">от 1 400 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=clipper">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="clipper">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/men-styling.png" class="card-img-top" alt="Мастер укладывает волосы мужчины феном" loading="lazy" width="1122" height="1402">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Мужской зал</span></div>
+                <h3 class="card-title">Мужская укладка</h3>
+                <p class="card-text">Форма и текстура на каждый день или к событию.</p>
+                <p class="service-meta mt-auto">от 1 300 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=men-style">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="men-style">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          </div>
+        </section>
+        <section class="catalog-group" id="care" aria-labelledby="care-title">
+          <h2 class="catalog-group-title" id="care-title">Уход</h2>
+          <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/hair-care.png" class="card-img-top" alt="Мастер наносит уход на волосы клиентки" loading="lazy" width="1122" height="1402">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Уход</span></div>
+                <h3 class="card-title">Уход для волос</h3>
+                <p class="card-text">Подберём процедуру по состоянию и типу волос.</p>
+                <p class="service-meta mt-auto">от 2 000 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=care">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="care">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/hair-repair.png" class="card-img-top" alt="Мастер наносит восстанавливающий состав на волосы" loading="lazy" width="1122" height="1402">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Уход</span></div>
+                <h3 class="card-title">Восстановление волос</h3>
+                <p class="card-text">Питательный уход для сухих и повреждённых волос.</p>
+                <p class="service-meta mt-auto">от 3 200 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=repair">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="repair">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card service-card">
+              <img src="images/scalp-massage.png" class="card-img-top" alt="Мастер делает массаж головы у мойки" loading="lazy" width="1122" height="1402">
+              <div class="card-body d-flex flex-column">
+                <div class="mb-3"><span class="badge badge-salon">Уход</span></div>
+                <h3 class="card-title">Массаж головы</h3>
+                <p class="card-text">Мягкий массаж кожи головы во время ухода.</p>
+                <p class="service-meta mt-auto">от 1 600 ₽</p>
+                <div class="d-flex flex-wrap gap-2"><a class="btn btn-salon-dark" href="product.html?service=scalp">Подробнее</a><button class="btn btn-salon-outline" type="button" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="scalp">Записаться</button></div>
+              </div>
+            </article>
+          </div>
+          </div>
+        </section>
       </div>
     </section>
     <section class="services-section section-space-sm" aria-labelledby="faq-title"><div class="container"><div class="row g-5"><div class="col-12 col-lg-4"><h2 class="section-title" id="faq-title">Перед визитом</h2><p>Ответы на частые вопросы о выборе услуги и записи.</p></div><div class="col-12 col-lg-8"><div class="accordion" id="serviceFaq">
       <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">Как выбрать стрижку?</button></h3><div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#serviceFaq"><div class="accordion-body">Начните с желаемой длины и привычной укладки. На консультации мастер уточняет структуру волос, направление роста и сколько времени вы готовы тратить на уход дома.</div></div></div>
       <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">Почему цена указана «от»?</button></h3><div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#serviceFaq"><div class="accordion-body">Для окрашивания и ухода стоимость зависит от длины, густоты, выбранной техники и количества материалов. На сайте указана ориентировочная стартовая цена.</div></div></div>
-      <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">Что учесть перед окрашиванием?</button></h3><div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#serviceFaq"><div class="accordion-body">Сохраните несколько примеров желаемого цвета и расскажите мастеру о прошлых окрашиваниях. Это поможет обсудить подходящую технику, время и ориентировочную стоимость.</div></div></div>
+      <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">Что учесть перед окрашиванием?</button></h3><div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#serviceFaq"><div class="accordion-body">Сохраните фотографии желаемого цвета и расскажите мастеру о прошлых окрашиваниях. Это поможет обсудить подходящую технику, время и ориентировочную стоимость.</div></div></div>
     </div></div></div></div></section>
     <section class="container section-space-sm" aria-labelledby="space-title"><div class="row g-4 align-items-center"><div class="col-12 col-lg-7"><img class="w-100 gallery-photo" src="images/salon.webp" alt="Пространство парикмахерской" loading="lazy" width="1536" height="1024"></div><div class="col-12 col-lg-5"><h2 class="section-title" id="space-title">Место для вашего образа</h2><p class="section-lead">Выберите услугу в каталоге, затем свободный день и время в форме записи.</p><a class="btn btn-salon-dark" href="order.html">К записи</a></div></div></section>
   </main>
-  <footer class="site-footer py-5 mt-5">
+  <footer class="site-footer py-5">
     <div class="container">
       <div class="row g-4">
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-4 footer-intro">
           <a class="footer-brand" href="index.html">Новый образ</a>
           <p class="footer-copy mb-0">Женские и мужские услуги в одном пространстве.</p>
         </div>
-        <div class="col-12 col-sm-6 col-lg-2">
+        <div class="col-12 col-md-4 footer-navigation">
           <h2 class="h5 mb-3">Навигация</h2>
           <ul class="list-unstyled footer-links mb-0">
-            <li><a href="index.html">Главная</a></li>
             <li><a href="catalog.html">Услуги</a></li>
-            <li><a href="product.html">Об услуге</a></li>
+            <li><a href="masters.html">Мастера</a></li>
             <li><a href="contacts.html">О студии</a></li>
-            <li><a href="order.html">Запись</a></li>
           </ul>
         </div>
-        <div class="col-12 col-sm-6 col-lg-3">
-          <h2 class="h5 mb-3">График работы</h2>
-          <div class="footer-copy mb-0">
-            <a href="order.html">Форма записи</a>
-            <span>Ежедневно с 10:00 до 22:00</span>
-          </div>
-        </div>
-        <div class="col-12 col-lg-3">
-          <h2 class="h5 mb-3">Новый образ</h2>
-          <p class="footer-copy mb-0">Женский и мужской зал<br>Стрижки, окрашивание и уход<br>Укладки и оформление бороды</p>
-          <a class="btn btn-salon footer-action" href="order.html">Записаться</a>
+        <div class="col-12 col-md-4 footer-contact">
+          <h2 class="h5 mb-3">Связаться с нами</h2>
+          <address class="footer-contact-list"><div class="footer-contact-row"><svg aria-hidden="true"><use href="images/footer-icons.svg#location"></use></svg><span>Москва, улица Зеркальная, 10</span></div><a class="footer-contact-row" href="tel:+74950002210"><svg aria-hidden="true"><use href="images/footer-icons.svg#phone"></use></svg><span>+7 (495) 000-22-10</span></a><div class="footer-contact-row"><svg aria-hidden="true"><use href="images/footer-icons.svg#clock"></use></svg><span>Ежедневно с 10:00 до 22:00</span></div><a class="footer-contact-row" href="mailto:hello@novyi-obraz.example"><svg aria-hidden="true"><use href="images/footer-icons.svg#mail"></use></svg><span>hello@novyi-obraz.example</span></a></address>
         </div>
       </div>
-      <p class="footer-copy footer-note mb-0">© 2026 Новый образ.</p>
+      <p class="footer-copy footer-note mb-0">© 2026 Новый образ. Все права защищены.</p>
     </div>
   </footer>
   <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalTitle" aria-hidden="true">
@@ -103,6 +247,6 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=nav-order-2"></script>
 </body>
 </html>

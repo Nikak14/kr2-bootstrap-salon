@@ -14,7 +14,7 @@
 
 html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
 body { margin: 0; background: var(--salon-paper); }
-img { max-width: 100%; }
+img { max-width: 100%; height: auto; }
 a { text-underline-offset: .22em; }
 :focus-visible { outline: 3px solid var(--salon-gold); outline-offset: 3px; }
 .skip-link { position: absolute; top: -5rem; left: 1rem; z-index: 2000; padding: .6rem 1rem; background: var(--salon-gold); color: var(--salon-deep); }
@@ -56,6 +56,32 @@ a { text-underline-offset: .22em; }
 .benefit { padding-top: 1.35rem; border-top: 2px solid var(--salon-ink); }
 .benefit h3 { font-size: 1.5rem; }
 .benefit p { color: var(--salon-muted); margin-bottom: 0; }
+.about-intro p:not(.section-lead) { max-width: 36rem; color: var(--salon-muted); }
+.about-direction { display: flex; flex-direction: column; background: #fff; }
+.about-direction img, .team-card img { display: block; width: 100%; height: auto; }
+.about-direction__body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: clamp(1.4rem, 3vw, 2.3rem); }
+.about-direction__body h3 { font-size: clamp(1.8rem, 2.5vw, 2.5rem); }
+.about-direction__body p { max-width: 42ch; color: var(--salon-muted); }
+.about-direction__body a { margin-top: auto; color: var(--salon-ink); font-weight: 600; }
+.about-direction__body a:hover { color: var(--salon-gold-dark); }
+.team-card { height: 100%; border-top: 2px solid var(--salon-ink); }
+.team-card__body { padding-top: 1.4rem; }
+.team-card__role { margin: 0 0 .75rem; color: var(--salon-muted); font-size: .9rem; }
+.team-card h3 { font-size: 2.3rem; }
+.team-card__body > p:last-child { max-width: 38ch; color: var(--salon-muted); }
+.team-card__link { display: block; color: inherit; text-decoration: none; }
+.team-card__link:hover h3, .team-card__link:focus-visible h3 { color: var(--salon-gold-dark); }
+.master-profile { display: flex; flex-direction: column; background: #fff; scroll-margin-top: 7rem; }
+.master-profile img { display: block; width: 100%; height: auto; }
+.master-profile__body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: clamp(1.4rem, 2.5vw, 2rem); }
+.master-profile h3 { margin-bottom: .15rem; font-size: clamp(2rem, 3vw, 2.65rem); }
+.master-profile__role { margin-bottom: 1.2rem; color: var(--salon-gold-dark); font-weight: 600; }
+.master-profile__focus { margin-top: auto; padding-top: .5rem; }
+.master-profile__body > a { color: var(--salon-ink); font-weight: 600; }
+.master-profile__body > a:hover { color: var(--salon-gold-dark); }
+.visit-step { height: 100%; padding-top: 1rem; border-top: 2px solid var(--salon-ink); }
+.visit-step h3 { font-size: 1.7rem; }
+.visit-step p { max-width: 36ch; margin-bottom: 0; color: var(--salon-muted); }
 .services-section { background: var(--salon-soft); }
 .service-card { border: 0; border-radius: 0; background: #fff; height: 100%; overflow: hidden; }
 .service-card:hover { transform: translateY(-5px); }
@@ -83,10 +109,12 @@ a { text-underline-offset: .22em; }
 .contact-section .text-muted-salon { color: #c4bcb0; }
 .map-frame { height: 430px; background: #292b28; }
 .map-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+.studio-contacts p { display: flex; flex-direction: column; gap: .15rem; margin-bottom: 1rem; }
+.studio-contacts span { color: var(--salon-muted); font-size: .9rem; }
+.studio-contacts strong { color: var(--salon-ink); font-size: 1.1rem; font-weight: 500; overflow-wrap: anywhere; }
 .demo-note { font-size: .91rem; color: var(--salon-muted); }
 .contact-section .demo-note { color: #d4cabd; }
 .contact-section .demo-note a { color: #f1d2a2; }
-.contact-section + .site-footer { margin-top: 0 !important; }
 
 .page-hero { background: var(--salon-deep); color: var(--salon-paper); padding-block: clamp(4rem, 7vw, 7rem); }
 .page-hero h1 { font-size: clamp(3.5rem, 8vw, 8rem); line-height: .95; letter-spacing: -.05em; }
@@ -94,7 +122,10 @@ a { text-underline-offset: .22em; }
 .breadcrumb-item a { color: var(--salon-gold); }
 .breadcrumb-item.active { color: #e0d7cb; }
 .catalog-filter .nav-link { border-radius: 0; color: var(--salon-ink); background: var(--salon-soft); margin-right: .5rem; margin-bottom: .5rem; }
-.catalog-filter .nav-link.active { background: var(--salon-ink); color: var(--salon-paper); border-color: var(--salon-ink); }
+.catalog-filter .nav-link[aria-pressed="true"] { background: var(--salon-ink); color: var(--salon-paper); border-color: var(--salon-ink); }
+.catalog-group + .catalog-group { margin-top: 3.5rem; }
+.catalog-group[hidden] { display: none; }
+.catalog-group-title { font-size: clamp(2rem, 3vw, 3rem); margin-bottom: 1.5rem; }
 .service-detail-photo { display: block; width: 100%; height: auto; }
 .detail-facts { background: var(--salon-soft); padding: 1.5rem; }
 .detail-facts dt { color: var(--salon-muted); font-weight: 400; }
@@ -118,6 +149,18 @@ a { text-underline-offset: .22em; }
 .booking-list { padding-left: 1.2rem; }
 .booking-list li { margin-bottom: .8rem; }
 
+.reviews-shell { padding: clamp(1.75rem, 4vw, 3.5rem); color: var(--salon-paper); background: var(--salon-deep); }
+.review-slide { display: flex; min-height: 290px; flex-direction: column; align-items: flex-start; }
+.review-score { display: inline-flex; align-items: baseline; gap: .3rem; padding: .45rem .7rem; color: var(--salon-deep); background: var(--salon-gold); font-weight: 600; white-space: nowrap; }
+.review-score small { font-size: .72rem; font-weight: 400; }
+.review-quote { max-width: 40ch; margin: 0 0 1.5rem; font-family: "Bodoni Moda", Georgia, serif; font-size: clamp(1.35rem, 2.4vw, 2.1rem); line-height: 1.3; overflow-wrap: anywhere; }
+.review-author { margin-top: auto; line-height: 1.5; }
+.review-author span { color: #d9d3ca; }
+.review-controls { display: flex; gap: .6rem; margin-top: 1.5rem; }
+.review-control { position: static; width: 48px; height: 48px; flex: none; color: var(--salon-deep); background: var(--salon-gold); opacity: 1; }
+.review-control:hover, .review-control:focus-visible { color: var(--salon-deep); background: #ebc893; opacity: 1; }
+.review-control svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
 .site-footer { color: #fff; background: var(--salon-deep); }
 .site-footer .row > .col-sm-6, .site-footer .row > .col-lg-3 { text-align: center; }
 .footer-brand { display: inline-block; color: var(--salon-gold); margin-bottom: 1rem; text-decoration: none; font-size: clamp(1.6rem, 2.5vw, 2.25rem); letter-spacing: -.04em; }
@@ -127,8 +170,20 @@ a { text-underline-offset: .22em; }
 .footer-links li + li { margin-top: .55rem; }
 .footer-links a:hover, .footer-copy a:hover { color: var(--salon-gold); }
 .footer-copy span { display: block; margin-top: .3rem; }
+.footer-intro { text-align: left; }
+.footer-navigation { text-align: center; }
+.footer-contact { text-align: left; }
+.footer-contact-list { display: grid; gap: .7rem; margin: 0; color: #d9d3ca; font-style: normal; }
+.footer-contact-row { display: grid; grid-template-columns: 1.25rem minmax(0, 1fr); gap: .7rem; align-items: start; width: fit-content; max-width: 100%; color: #d9d3ca; text-decoration: none; }
+.footer-contact-row svg { width: 1.2rem; height: 1.2rem; margin-top: .15rem; fill: none; stroke: var(--salon-gold); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.footer-contact-row:hover { color: #fff; }
 .footer-note { margin-top: 3.5rem; font-size: .9rem; }
 .footer-action { margin-top: 1.25rem; }
+
+@media (min-width: 768px) {
+  .footer-contact { display: flex; flex-direction: column; align-items: flex-end; }
+  .footer-contact > h2, .footer-contact-list { width: min(100%, 21rem); }
+}
 
 .scroll-top { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 1030; display: grid; width: 48px; height: 56px; place-items: center; padding: 0; color: var(--salon-gold); background: transparent; border: 0; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity 180ms ease, transform 180ms ease, color 180ms ease; }
 .scroll-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }

@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Информация о парикмахерской «Новый образ» и карта Яндекса.">
+  <meta name="description" content="О парикмахерской «Новый образ»: женский и мужской зал, мастера, атмосфера студии, контакты и карта.">
   <title>О студии — Новый образ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/custom.css?v=footer-layout-4">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -21,9 +21,10 @@
         <div class="collapse navbar-collapse" id="siteMenu">
           <ul class="navbar-nav ms-lg-auto me-lg-4 mb-3 mb-lg-0 gap-lg-3">
             <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="masters.html">Мастера</a></li>
             <li class="nav-item"><a class="nav-link" href="catalog.html">Услуги</a></li>
-            <li class="nav-item"><a class="nav-link" href="product.html">Об услуге</a></li>
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="contacts.html">О студии</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html#location-title">Контакты</a></li>
           </ul>
           <a class="btn btn-salon" href="order.html">Записаться</a>
         </div>
@@ -31,51 +32,117 @@
     </nav>
   </header>
   <main id="main">
-    <section class="page-hero"><div class="container"><nav aria-label="Хлебные крошки"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Главная</a></li><li class="breadcrumb-item active" aria-current="page">О студии</li></ol></nav><h1 class="mb-3">О студии</h1><p class="section-lead mb-0">«Новый образ» — концепция современной парикмахерской с женскими и мужскими услугами.</p></div></section>
-    <section class="container section-space" aria-labelledby="about-title"><div class="row g-5 align-items-center"><div class="col-12 col-lg-5"><h2 class="section-title mb-4" id="about-title">Место, где удобно быть собой</h2><p class="section-lead">Мы хотим сделать выбор услуги простым: понятный каталог, ориентиры по стоимости и времени, подробное описание и запись без звонка.</p><p>Для каждого направления указаны длительность и цена, чтобы вы могли спокойно выбрать подходящий вариант.</p><a class="btn btn-salon-dark mt-3" href="catalog.html">Смотреть услуги</a></div><div class="col-12 col-lg-7"><img class="w-100" src="images/salon.webp" alt="Интерьер парикмахерской" width="1536" height="1024"></div></div></section>
-    <section class="services-section section-space-sm" aria-labelledby="approach-title"><div class="container"><h2 class="section-title mb-5" id="approach-title">Как устроен визит</h2><div class="row g-4"><div class="col-12 col-md-4"><div class="benefit"><h3>Выбор</h3><p>Откройте женские, мужские услуги или уход и сравните описания и цены.</p></div></div><div class="col-12 col-md-4"><div class="benefit"><h3>Детали</h3><p>На странице услуги указаны примерная продолжительность и состав визита.</p></div></div><div class="col-12 col-md-4"><div class="benefit"><h3>Время</h3><p>В форме записи выберите свободный интервал. Подтверждение появится на экране.</p></div></div></div></div></section>
-    <section class="container section-space" aria-labelledby="location-title"><div class="row g-5 align-items-center"><div class="col-12 col-lg-4"><h2 class="section-title mb-4" id="location-title">Карта</h2><a class="btn btn-salon-outline mt-2" href="https://yandex.ru/maps/?ll=37.617635%2C55.755814&amp;z=15&amp;pt=37.617635%2C55.755814%2Cpm2rdm" target="_blank" rel="noopener noreferrer">Открыть на Яндекс Картах</a></div><div class="col-12 col-lg-8"><div class="map-frame"><iframe src="https://yandex.ru/map-widget/v1/?ll=37.617635%2C55.755814&amp;z=15&amp;pt=37.617635%2C55.755814%2Cpm2rdm" loading="lazy" title="Карта центра Москвы на Яндекс Картах" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></div></section>
+    <section class="page-hero"><div class="container"><nav aria-label="Хлебные крошки"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Главная</a></li><li class="breadcrumb-item active" aria-current="page">О студии</li></ol></nav><h1 class="mb-3">О студии</h1><p class="section-lead mb-0">Женские и мужские стрижки, цвет и уход в спокойном пространстве.</p></div></section>
+    <section class="container section-space" aria-labelledby="about-title">
+      <div class="row g-5 align-items-center">
+        <div class="col-12 col-lg-5 about-intro">
+          <h2 class="section-title mb-4" id="about-title">Здесь удобно быть собой</h2>
+          <p class="section-lead">Сюда приходят, чтобы освежить привычную стрижку или попробовать что-то новое. Перед работой мастер узнаёт, как вы носите волосы каждый день и какого результата ждёте.</p>
+          <p>Мы занимаемся стрижками, окрашиванием, укладкой и уходом. До начала процедуры можно обсудить форму, этапы работы, время и стоимость.</p>
+          <a class="btn btn-salon-dark mt-3" href="catalog.html">Смотреть услуги</a>
+        </div>
+        <div class="col-12 col-lg-7"><img class="w-100" src="images/salon.webp" alt="Кресла и зеркала в студии «Новый образ»" width="1536" height="1024"></div>
+      </div>
+    </section>
+    <section class="services-section section-space-sm" aria-labelledby="directions-title">
+      <div class="container">
+        <div class="row align-items-end g-4 mb-4">
+          <div class="col-12 col-lg-7"><h2 class="section-title mb-0" id="directions-title">Женский и мужской зал</h2></div>
+          <div class="col-12 col-lg-5"><p class="section-lead mb-0">Для каждого направления есть свои услуги, но подход один: сначала понять, какой результат вам нужен.</p></div>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-md-6">
+            <article class="about-direction h-100">
+              <img src="images/women-cut.webp" alt="Мастер работает с женской стрижкой" width="1024" height="1280" loading="lazy">
+              <div class="about-direction__body">
+                <h3>Женские услуги</h3>
+                <p>Стрижки для разной длины волос, окрашивание, укладка и уход. Мастер подберёт форму и оттенок с учётом структуры волос и ваших привычек.</p>
+                <a href="catalog.html#women">Смотреть женские услуги →</a>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6">
+            <article class="about-direction h-100">
+              <img src="images/men-cut.webp" alt="Мастер выполняет мужскую стрижку" width="1024" height="1280" loading="lazy">
+              <div class="about-direction__body">
+                <h3>Мужские услуги</h3>
+                <p>Стрижки ножницами и машинкой, оформление бороды и укладка. Перед началом обсудим длину, контур и то, как вы обычно укладываете волосы.</p>
+                <a href="catalog.html#men">Смотреть мужские услуги →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container section-space" aria-labelledby="team-title">
+      <div class="row align-items-end g-4 mb-4">
+        <div class="col-12 col-lg-7"><h2 class="section-title mb-0" id="team-title">Наши мастера</h2></div>
+        <div class="col-12 col-lg-5"><p class="section-lead mb-0">Расскажите о пожеланиях до начала работы. Мастер предложит вариант, который подходит вашим волосам.</p></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <article class="team-card">
+            <img src="images/stylist-anna.png" alt="Мастер Анна в студии" width="1122" height="1402" loading="lazy">
+            <div class="team-card__body"><h3>Анна</h3><p class="team-card__role">Стрижки и укладки</p><p>Подбирает форму, которую удобно носить каждый день. Подскажет, как сохранить объём и повторить укладку дома.</p></div>
+          </article>
+        </div>
+        <div class="col-12 col-md-4">
+          <article class="team-card">
+            <img src="images/stylist-daniel.png" alt="Мастер Даниил в студии" width="1122" height="1402" loading="lazy">
+            <div class="team-card__body"><h3>Даниил</h3><p class="team-card__role">Мужской зал</p><p>Работает с короткими стрижками, переходами и бородой. Уточнит желаемую длину и подберёт аккуратный контур.</p></div>
+          </article>
+        </div>
+        <div class="col-12 col-md-4">
+          <article class="team-card">
+            <img src="images/stylist-ekaterina.png" alt="Мастер Екатерина в студии" width="1122" height="1402" loading="lazy">
+            <div class="team-card__body"><h3>Екатерина</h3><p class="team-card__role">Окрашивание и уход</p><p>Поможет выбрать оттенок и уход с учётом состояния волос. Расскажет, как поддерживать цвет между визитами.</p></div>
+          </article>
+        </div>
+      </div>
+      <a class="btn btn-salon-dark mt-5" href="masters.html">Познакомиться со всеми мастерами</a>
+    </section>
+    <section class="services-section section-space-sm" aria-labelledby="approach-title">
+      <div class="container">
+        <h2 class="section-title mb-5" id="approach-title">Как проходит визит</h2>
+        <div class="row g-4">
+          <div class="col-12 col-md-4"><div class="visit-step"><h3>Разговор</h3><p>Расскажите, что хотите изменить или сохранить. Мастер посмотрит структуру волос и предложит подходящую форму или оттенок.</p></div></div>
+          <div class="col-12 col-md-4"><div class="visit-step"><h3>Работа</h3><p>Перед началом обсудим этапы и стоимость. Во время стрижки или окрашивания можно уточнить детали и скорректировать пожелания.</p></div></div>
+          <div class="col-12 col-md-4"><div class="visit-step"><h3>Результат</h3><p>В конце мастер покажет укладку и объяснит, как поддерживать форму, оттенок или состояние волос дома.</p></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="container section-space" aria-labelledby="location-title"><div class="row g-5 align-items-center"><div class="col-12 col-lg-4"><h2 class="section-title mb-4" id="location-title">Контакты</h2><address class="studio-contacts mb-4"><p><span>Адрес</span><strong>Москва, улица Зеркальная, 10</strong></p><p><span>Телефон</span><strong>+7 (495) 000-22-10</strong></p><p><span>Электронная почта</span><strong>hello@novyi-obraz.example</strong></p><p><span>График работы</span><strong>Ежедневно с 10:00 до 22:00</strong></p></address><a class="btn btn-salon-outline mt-2" href="https://yandex.ru/maps/?ll=37.617635%2C55.755814&amp;z=15&amp;pt=37.617635%2C55.755814%2Cpm2rdm" target="_blank" rel="noopener noreferrer">Открыть на Яндекс Картах</a></div><div class="col-12 col-lg-8"><div class="map-frame"><iframe src="https://yandex.ru/map-widget/v1/?ll=37.617635%2C55.755814&amp;z=15&amp;pt=37.617635%2C55.755814%2Cpm2rdm" loading="lazy" title="Карта центра Москвы на Яндекс Картах" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></div></section>
     <section class="container section-space-sm" aria-labelledby="mood-title">
       <h2 class="section-title mb-4" id="mood-title">Настроение студии</h2>
       <div class="row g-4 mini-gallery">
-        <div class="col-12 col-md-4"><figure><img src="images/women-cut.webp" alt="женской стрижки" loading="lazy" width="1024" height="1280"><figcaption>Женские образы</figcaption></figure></div>
-        <div class="col-12 col-md-4"><figure><img src="images/men-cut.webp" alt="мужской стрижки" loading="lazy" width="1024" height="1280"><figcaption>Мужские образы</figcaption></figure></div>
-        <div class="col-12 col-md-4"><figure><img src="images/color.webp" alt="окрашивания волос" loading="lazy" width="1024" height="1280"><figcaption>Цвет и форма</figcaption></figure></div>
+        <div class="col-12 col-md-4"><figure><img src="images/bob.webp" alt="Женская стрижка с чёткой формой" loading="lazy" width="1024" height="1280"><figcaption>Форма</figcaption></figure></div>
+        <div class="col-12 col-md-4"><figure><img src="images/beard.webp" alt="Мастер оформляет бороду" loading="lazy" width="1024" height="1280"><figcaption>Детали</figcaption></figure></div>
+        <div class="col-12 col-md-4"><figure><img src="images/color.webp" alt="Окрашенные длинные волосы" loading="lazy" width="1024" height="1280"><figcaption>Цвет</figcaption></figure></div>
       </div>
 
     </section>
   </main>
-  <footer class="site-footer py-5 mt-5">
+  <footer class="site-footer py-5">
     <div class="container">
       <div class="row g-4">
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-4 footer-intro">
           <a class="footer-brand" href="index.html">Новый образ</a>
           <p class="footer-copy mb-0">Женские и мужские услуги в одном пространстве.</p>
         </div>
-        <div class="col-12 col-sm-6 col-lg-2">
+        <div class="col-12 col-md-4 footer-navigation">
           <h2 class="h5 mb-3">Навигация</h2>
           <ul class="list-unstyled footer-links mb-0">
-            <li><a href="index.html">Главная</a></li>
             <li><a href="catalog.html">Услуги</a></li>
-            <li><a href="product.html">Об услуге</a></li>
+            <li><a href="masters.html">Мастера</a></li>
             <li><a href="contacts.html">О студии</a></li>
-            <li><a href="order.html">Запись</a></li>
           </ul>
         </div>
-        <div class="col-12 col-sm-6 col-lg-3">
-          <h2 class="h5 mb-3">График работы</h2>
-          <div class="footer-copy mb-0">
-            <a href="order.html">Форма записи</a>
-            <span>Ежедневно с 10:00 до 22:00</span>
-          </div>
-        </div>
-        <div class="col-12 col-lg-3">
-          <h2 class="h5 mb-3">Новый образ</h2>
-          <p class="footer-copy mb-0">Женский и мужской зал<br>Стрижки, окрашивание и уход<br>Укладки и оформление бороды</p>
-          <a class="btn btn-salon footer-action" href="order.html">Записаться</a>
+        <div class="col-12 col-md-4 footer-contact">
+          <h2 class="h5 mb-3">Связаться с нами</h2>
+          <address class="footer-contact-list"><div class="footer-contact-row"><svg aria-hidden="true"><use href="images/footer-icons.svg#location"></use></svg><span>Москва, улица Зеркальная, 10</span></div><a class="footer-contact-row" href="tel:+74950002210"><svg aria-hidden="true"><use href="images/footer-icons.svg#phone"></use></svg><span>+7 (495) 000-22-10</span></a><div class="footer-contact-row"><svg aria-hidden="true"><use href="images/footer-icons.svg#clock"></use></svg><span>Ежедневно с 10:00 до 22:00</span></div><a class="footer-contact-row" href="mailto:hello@novyi-obraz.example"><svg aria-hidden="true"><use href="images/footer-icons.svg#mail"></use></svg><span>hello@novyi-obraz.example</span></a></address>
         </div>
       </div>
-      <p class="footer-copy footer-note mb-0">© 2026 Новый образ.</p>
+      <p class="footer-copy footer-note mb-0">© 2026 Новый образ. Все права защищены.</p>
     </div>
   </footer>
   <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalTitle" aria-hidden="true">
@@ -92,6 +159,6 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=nav-order-2"></script>
 </body>
 </html>

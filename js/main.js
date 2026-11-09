@@ -1,35 +1,73 @@
+const primaryMenu = document.querySelector("#siteMenu .navbar-nav");
+if (primaryMenu) {
+  const menuOrder = ["index.html", "masters.html", "catalog.html", "contacts.html"];
+  const menuItems = [...primaryMenu.children];
+  menuItems.sort((firstItem, secondItem) => {
+    const firstPage = new URL(firstItem.querySelector("a").href).pathname.split("/").pop();
+    const secondPage = new URL(secondItem.querySelector("a").href).pathname.split("/").pop();
+    const firstHref = firstItem.querySelector("a").hash ? "contacts.html#location-title" : firstPage;
+    const secondHref = secondItem.querySelector("a").hash ? "contacts.html#location-title" : secondPage;
+    const fullOrder = [...menuOrder, "contacts.html#location-title"];
+    return fullOrder.indexOf(firstHref) - fullOrder.indexOf(secondHref);
+  });
+  menuItems.forEach((item) => primaryMenu.append(item));
+}
+
 const services = {
   "women-cut": { title: "Женская стрижка", price: "от 2 400 ₽", duration: "60–90 минут", image: "images/women-cut.webp", description: "Форма, которая работает каждый день: консультация, мытьё, стрижка и лёгкая укладка.", details: "Мастер учитывает густоту, структуру волос и привычный способ укладки. В конце объясняет, как поддерживать форму дома." },
   "men-cut": { title: "Мужская стрижка", price: "от 1 800 ₽", duration: "45–60 минут", image: "images/men-cut.webp", description: "Точная форма и комфортная длина: от классики до современной текстуры.", details: "На консультации подбирается форма с учётом роста волос и привычного ухода. В услугу включены мытьё и финишная укладка." },
   "color": { title: "Окрашивание", price: "от 5 200 ₽", duration: "от 2 часов", image: "images/color.webp", description: "Цвет с учётом исходной базы, состояния волос и желаемого результата.", details: "Перед процедурой мастер обсуждает оттенок и план ухода. Итоговая стоимость зависит от длины волос, техники и расхода материалов." },
   "style": { title: "Укладка", price: "от 1 700 ₽", duration: "45–75 минут", image: "images/bob.webp", description: "Повседневная или вечерняя укладка с естественным движением волос.", details: "Подбираем объём, текстуру и степень фиксации под событие и тип волос." },
   "beard": { title: "Оформление бороды", price: "от 1 200 ₽", duration: "30–45 минут", image: "images/beard.webp", description: "Аккуратный контур и форма бороды с учётом черт лица.", details: "Мастер подбирает длину, выстраивает контур и даёт рекомендации по домашнему уходу." },
-  "care": { title: "Уход для волос", price: "от 2 000 ₽", duration: "45–60 минут", image: "images/salon.webp", description: "Уход после консультации о состоянии волос и кожи головы.", details: "Состав и этапы процедуры подбираются индивидуально. Результат зависит от исходного состояния волос." }
+  "care": { title: "Уход для волос", price: "от 2 000 ₽", duration: "45–60 минут", image: "images/hair-care.png", description: "Уход после консультации о состоянии волос и кожи головы.", details: "Состав и этапы процедуры подбираются индивидуально. Результат зависит от исходного состояния волос." },
+  "fringe": { title: "Стрижка чёлки", price: "от 900 ₽", duration: "20–30 минут", image: "images/fringe.png", description: "Обновим длину и форму чёлки без полной стрижки.", details: "Мастер учитывает форму лица и то, как чёлка лежит без укладки. После стрижки покажет, как быстро уложить её дома." },
+  "toning": { title: "Тонирование", price: "от 3 500 ₽", duration: "60–90 минут", image: "images/toning.png", description: "Мягкое обновление оттенка и блеска волос.", details: "Мастер подбирает оттенок после оценки исходного цвета и состояния волос. Тонирование помогает освежить цвет без резкой смены образа." },
+  "clipper": { title: "Стрижка машинкой", price: "от 1 400 ₽", duration: "30–45 минут", image: "images/clipper-cut.png", description: "Ровная длина и аккуратный переход.", details: "Обсудим желаемую длину и форму перехода. Мастер обработает контур и завершит стрижку лёгкой укладкой." },
+  "men-style": { title: "Мужская укладка", price: "от 1 300 ₽", duration: "30–45 минут", image: "images/men-styling.png", description: "Форма и текстура на каждый день или к событию.", details: "Мастер подберёт средство и способ укладки под длину и структуру волос, покажет, как повторить результат дома." },
+  "repair": { title: "Восстановление волос", price: "от 3 200 ₽", duration: "60–90 минут", image: "images/hair-repair.png", description: "Питательный уход для сухих и повреждённых волос.", details: "После консультации мастер подберёт состав и этапы ухода с учётом состояния волос. Процедура направлена на мягкость и гладкость." },
+  "scalp": { title: "Массаж головы", price: "от 1 600 ₽", duration: "30–45 минут", image: "images/scalp-massage.png", description: "Мягкий массаж кожи головы во время ухода.", details: "Процедура включает очищение и спокойный массаж у мойки. Подходит, когда хочется выделить время на отдых и уход." }
 };
+
+const catalogFilters = document.querySelectorAll("#serviceFilters [data-category]");
+if (catalogFilters.length) {
+  const groups = document.querySelectorAll(".catalog-group");
+  catalogFilters.forEach((button) => {
+    button.addEventListener("click", () => {
+      const activeCategory = button.getAttribute("aria-pressed") === "true" ? null : button.dataset.category;
+      catalogFilters.forEach((filter) => filter.setAttribute("aria-pressed", String(filter.dataset.category === activeCategory)));
+      groups.forEach((group) => { group.hidden = activeCategory !== null && group.id !== activeCategory; });
+    });
+  });
+}
 
 const query = new URLSearchParams(location.search);
 const selectedService = query.get("service");
 
-document.querySelectorAll("[data-product-title]").forEach((node) => {
-  const item = services[selectedService] || services["women-cut"];
-  const fields = {
-    "[data-product-title]": item.title,
-    "[data-product-description]": item.description,
-    "[data-product-details]": item.details,
-    "[data-product-price]": item.price,
-    "[data-product-duration]": item.duration
-  };
-  Object.entries(fields).forEach(([selector, value]) => {
-    document.querySelectorAll(selector).forEach((target) => { target.textContent = value; });
-  });
-  const image = document.querySelector("[data-product-image]");
-  if (image) { image.src = item.image; image.alt = item.title + ""; }
-  const book = document.querySelector("[data-product-book]");
-  if (book) book.href = "order.html?service=" + encodeURIComponent(selectedService && services[selectedService] ? selectedService : "women-cut");
-  const modalTrigger = document.querySelector("[data-bs-target='#bookingModal'][data-service]");
-  if (modalTrigger) modalTrigger.dataset.service = selectedService && services[selectedService] ? selectedService : "women-cut";
-  document.title = item.title + " — Новый образ";
-});
+if (document.querySelector("[data-product-title]")) {
+  if (!selectedService || !Object.hasOwn(services, selectedService)) {
+    location.replace("catalog.html");
+  } else {
+    const item = services[selectedService];
+    const fields = {
+      "[data-product-title]": item.title,
+      "[data-product-description]": item.description,
+      "[data-product-details]": item.details,
+      "[data-product-price]": item.price,
+      "[data-product-duration]": item.duration,
+      "[data-product-crumb]": item.title
+    };
+    Object.entries(fields).forEach(([selector, value]) => {
+      document.querySelectorAll(selector).forEach((target) => { target.textContent = value; });
+    });
+    const image = document.querySelector("[data-product-image]");
+    if (image) { image.src = item.image; image.alt = item.title; }
+    const book = document.querySelector("[data-product-book]");
+    if (book) book.href = "order.html?service=" + encodeURIComponent(selectedService);
+    const modalTrigger = document.querySelector("[data-bs-target='#bookingModal'][data-service]");
+    if (modalTrigger) modalTrigger.dataset.service = selectedService;
+    document.title = item.title + " — Новый образ";
+  }
+}
 
 const bookingModal = document.querySelector("#bookingModal");
 if (bookingModal) {
@@ -39,6 +77,115 @@ if (bookingModal) {
     bookingModal.querySelector("[data-modal-service]").textContent = item.title;
     bookingModal.querySelector("[data-modal-price]").textContent = item.price;
     bookingModal.querySelector("[data-modal-link]").href = "order.html?service=" + encodeURIComponent(key);
+  });
+}
+
+const reviewForm = document.querySelector("#review-form");
+if (reviewForm) {
+  const reviewModal = document.querySelector("#reviewModal");
+  const reviewCarousel = document.querySelector("#salonReviews");
+  const reviewList = reviewCarousel.querySelector(".carousel-inner");
+  const reviewStatus = document.querySelector("#review-status");
+  const reviewError = document.querySelector("#review-form-error");
+  const nameInput = reviewForm.querySelector("#review-name");
+  const serviceInput = reviewForm.querySelector("#review-service");
+  const ratingInput = reviewForm.querySelector("#review-rating");
+  const textInput = reviewForm.querySelector("#review-text");
+  const storageKey = "novyi-obraz-reviews";
+  const initialRatings = [5, 5, 4.7];
+
+  const readReviews = () => {
+    try {
+      const value = JSON.parse(localStorage.getItem(storageKey) || "[]");
+      if (!Array.isArray(value)) return [];
+      return value.filter((review) =>
+        typeof review?.name === "string" && review.name.trim().length >= 2 &&
+        typeof review?.text === "string" && review.text.trim().length >= 20 &&
+        Object.hasOwn(services, review.service) &&
+        Number.isInteger(review.rating) && review.rating >= 1 && review.rating <= 5
+      );
+    } catch {
+      return [];
+    }
+  };
+
+  const appendReview = (review) => {
+    const article = document.createElement("article");
+    article.className = "carousel-item";
+    const slide = document.createElement("div");
+    slide.className = "review-slide";
+    const quote = document.createElement("blockquote");
+    quote.className = "review-quote";
+    quote.textContent = "«" + review.text + "»";
+    const score = document.createElement("span");
+    score.className = "review-score";
+    score.setAttribute("aria-label", "Оценка " + review.rating + " из 5");
+    const small = document.createElement("small");
+    small.textContent = "из 5";
+    score.append(document.createTextNode(review.rating.toFixed(1).replace(".", ",") + " "), small);
+    const author = document.createElement("p");
+    author.className = "review-author mb-0";
+    const name = document.createElement("strong");
+    name.textContent = review.name;
+    const service = document.createElement("span");
+    service.textContent = services[review.service].title;
+    author.append(name, document.createElement("br"), service);
+    slide.append(quote, score, author);
+    article.append(slide);
+    reviewList.append(article);
+    return article;
+  };
+
+  const updateAverage = (reviews) => {
+    const ratings = [...initialRatings, ...reviews.map((review) => review.rating)];
+    const average = ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length;
+    document.querySelector("[data-review-average]").textContent = average.toFixed(1).replace(".", ",");
+  };
+
+  const savedReviews = readReviews();
+  savedReviews.forEach(appendReview);
+  if (savedReviews.length) {
+    reviewList.querySelector(".carousel-item.active")?.classList.remove("active");
+    reviewList.lastElementChild.classList.add("active");
+  }
+  updateAverage(savedReviews);
+
+  reviewForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    nameInput.value = nameInput.value.trim();
+    textInput.value = textInput.value.trim();
+    reviewForm.classList.add("was-validated");
+    if (!reviewForm.checkValidity() || !Object.hasOwn(services, serviceInput.value)) return;
+
+    const review = {
+      name: nameInput.value,
+      service: serviceInput.value,
+      rating: Number(ratingInput.value),
+      text: textInput.value
+    };
+    const reviews = [...readReviews(), review];
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(reviews));
+    } catch {
+      reviewError.textContent = "Не удалось добавить отзыв. Попробуйте ещё раз.";
+      reviewError.hidden = false;
+      return;
+    }
+
+    appendReview(review);
+    updateAverage(reviews);
+    reviewError.hidden = true;
+    reviewStatus.textContent = "Спасибо! Ваш отзыв добавлен.";
+    reviewStatus.hidden = false;
+    reviewModal.addEventListener("hidden.bs.modal", () => {
+      const carousel = bootstrap.Carousel.getOrCreateInstance(reviewCarousel);
+      carousel.to(reviewList.children.length - 1);
+      carousel.pause();
+      reviewStatus.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, { once: true });
+    bootstrap.Modal.getOrCreateInstance(reviewModal).hide();
+    reviewForm.reset();
+    reviewForm.classList.remove("was-validated");
   });
 }
 
@@ -137,7 +284,7 @@ if (orderForm) {
       time: timeInput.value
     };
     if (!writeBookings([...items, booking])) {
-      showAlert("Браузер не разрешил сохранить запись. Проверьте настройки локального хранилища.", "danger");
+      showAlert("Не удалось сохранить запись. Попробуйте ещё раз.", "danger");
       return;
     }
     showAlert("Вы выбрали " + booking.date + " в " + booking.time + ". Запись добавлена в раздел «Мои записи».", "success");
@@ -165,7 +312,7 @@ document.querySelectorAll(".site-navbar .nav-link").forEach((link) => {
 });
 
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  const moving = [...document.querySelectorAll("main section h2, main section .section-lead, main section .service-card, main section .benefit, main section .gallery-photo, main section .mini-gallery img, main section .map-frame, main section .price-list, main section .story-copy")];
+  const moving = [...document.querySelectorAll("main section h2, main section .section-lead, main section .service-card, main section .benefit, main section .gallery-photo, main section .mini-gallery img, main section .map-frame, main section .price-list, main section .story-copy, main section .team-card, main section .master-profile")];
   moving.forEach((element, index) => {
     element.classList.add("reveal");
     element.style.transitionDelay = (index % 3) * 75 + "ms";
