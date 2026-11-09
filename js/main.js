@@ -165,7 +165,7 @@ document.querySelectorAll(".site-navbar .nav-link").forEach((link) => {
 });
 
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  const moving = [...document.querySelectorAll("main section h2, main section .section-lead, main section .service-card, main section .benefit, main section .gallery-photo, main section .map-frame, main section .price-list, main section .story-copy")];
+  const moving = [...document.querySelectorAll("main section h2, main section .section-lead, main section .service-card, main section .benefit, main section .gallery-photo, main section .mini-gallery img, main section .map-frame, main section .price-list, main section .story-copy")];
   moving.forEach((element, index) => {
     element.classList.add("reveal");
     element.style.transitionDelay = (index % 3) * 75 + "ms";
