@@ -59,7 +59,7 @@ a { text-underline-offset: .22em; }
 .services-section { background: var(--salon-soft); }
 .service-card { border: 0; border-radius: 0; background: #fff; height: 100%; overflow: hidden; }
 .service-card:hover { transform: translateY(-5px); }
-.service-card img { height: 325px; width: 100%; object-fit: cover; }
+.service-card img { display: block; width: 100%; height: auto; }
 .service-card .card-body { padding: 1.45rem; }
 .service-card .card-body > .mb-3 { position: absolute; top: 1rem; left: 1rem; z-index: 1; margin: 0 !important; }
 .service-card .card-title { font-size: 1.85rem; }
@@ -73,9 +73,9 @@ a { text-underline-offset: .22em; }
 .price-list li { display: flex; align-items: baseline; justify-content: space-between; gap: 1.25rem; padding: 1.1rem 1rem; }
 .price-list li:nth-child(odd) { background: var(--salon-soft); }
 .price-list strong { font-weight: 500; white-space: nowrap; }
-.gallery-photo { width: 100%; height: 320px; object-fit: cover; }
+.gallery-photo { display: block; width: 100%; height: auto; }
 .gallery-photo:hover { transform: scale(1.015); }
-.mini-gallery img { display: block; width: 100%; height: 280px; object-fit: cover; }
+.mini-gallery img { display: block; width: 100%; height: auto; }
 .mini-gallery figcaption { padding-top: .8rem; color: var(--salon-muted); }
 .mini-gallery a { color: var(--salon-ink); text-decoration: none; }
 .mini-gallery a:hover { color: var(--salon-gold-dark); }
@@ -95,7 +95,7 @@ a { text-underline-offset: .22em; }
 .breadcrumb-item.active { color: #e0d7cb; }
 .catalog-filter .nav-link { border-radius: 0; color: var(--salon-ink); background: var(--salon-soft); margin-right: .5rem; margin-bottom: .5rem; }
 .catalog-filter .nav-link.active { background: var(--salon-ink); color: var(--salon-paper); border-color: var(--salon-ink); }
-.service-detail-photo { max-height: 650px; width: 100%; object-fit: cover; }
+.service-detail-photo { display: block; width: 100%; height: auto; }
 .detail-facts { background: var(--salon-soft); padding: 1.5rem; }
 .detail-facts dt { color: var(--salon-muted); font-weight: 400; }
 .detail-facts dd { font-weight: 600; }
@@ -152,9 +152,7 @@ a { text-underline-offset: .22em; }
   .hero-title span + span { margin-left: 1.25rem; }
   .hero-photo { height: 350px; }
   .hero-bottom { left: .75rem; }
-  .service-card img { height: 260px; }
   .salon-story-photo { min-height: 310px; }
-  .gallery-photo { height: 260px; }
   .map-frame { height: 330px; }
   .scroll-top { right: 1rem; bottom: 1rem; }
 }
