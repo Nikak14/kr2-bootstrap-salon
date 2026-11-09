@@ -61,6 +61,6 @@ Bootstrap загружается по сети через CDN. Яндекс Ка
 
 ## Для сдачи
 
-- GitHub: ссылка будет добавлена после создания удалённого репозитория.
-- GitHub Pages: ссылка будет добавлена после публикации.
+- GitHub: https://github.com/Nikak14/kr2-bootstrap-salon
+- GitHub Pages: https://nikak14.github.io/kr2-bootstrap-salon/
 - ФИО и группа: заполнить перед сдачей.
