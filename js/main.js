@@ -23,7 +23,7 @@ document.querySelectorAll("[data-product-title]").forEach((node) => {
     document.querySelectorAll(selector).forEach((target) => { target.textContent = value; });
   });
   const image = document.querySelector("[data-product-image]");
-  if (image) { image.src = item.image; image.alt = item.title + " — демонстрационное изображение"; }
+  if (image) { image.src = item.image; image.alt = item.title + ""; }
   const book = document.querySelector("[data-product-book]");
   if (book) book.href = "order.html?service=" + encodeURIComponent(selectedService && services[selectedService] ? selectedService : "women-cut");
   const modalTrigger = document.querySelector("[data-bs-target='#bookingModal'][data-service]");
@@ -92,7 +92,7 @@ if (orderForm) {
     if (!items.length) {
       const empty = document.createElement("p");
       empty.className = "text-muted-salon";
-      empty.textContent = "Пока нет сохранённых демонстрационных записей.";
+      empty.textContent = "Пока нет записей.";
       bookingsList.append(empty);
       return;
     }
@@ -125,7 +125,7 @@ if (orderForm) {
     if (!orderForm.checkValidity()) return;
     const items = readBookings();
     if (items.some((item) => item.date === dateInput.value && item.time === timeInput.value)) {
-      showAlert("Это время уже занято в демонстрационном расписании. Выберите другое.", "warning");
+      showAlert("Это время уже занято. Выберите другое.", "warning");
       updateSlots();
       return;
     }
@@ -140,7 +140,7 @@ if (orderForm) {
       showAlert("Браузер не разрешил сохранить запись. Проверьте настройки локального хранилища.", "danger");
       return;
     }
-    showAlert("Демонстрационная запись сохранена в этом браузере: " + booking.date + " в " + booking.time + ". В салон данные не отправлены.", "success");
+    showAlert("Вы выбрали " + booking.date + " в " + booking.time + ". Запись добавлена в раздел «Мои записи».", "success");
     orderForm.reset();
     orderForm.classList.remove("was-validated");
     dateInput.min = day(1);
