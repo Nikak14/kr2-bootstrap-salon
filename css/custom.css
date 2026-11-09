@@ -26,15 +26,14 @@ a { text-underline-offset: .22em; }
 .section-space-sm { padding-block: clamp(3.5rem, 6vw, 6rem); }
 .text-muted-salon { color: var(--salon-muted); }
 
-.site-header { background: var(--salon-paper); color: var(--salon-ink); }
+.site-header { background: #fff; color: var(--salon-ink); z-index: 1040; }
 .site-brand { color: inherit; font-size: clamp(1.35rem, 2vw, 1.85rem); font-weight: 500; letter-spacing: -.045em; text-decoration: none; }
 .site-brand:hover { color: var(--salon-gold-dark); }
-.site-header-note { font-size: .94rem; }
-.site-navbar { background: var(--salon-deep); z-index: 1040; }
-.site-navbar .nav-link { color: #eee9e2; font-size: .95rem; }
-.site-navbar .nav-link:hover, .site-navbar .nav-link.active { color: var(--salon-gold); }
-.site-navbar .navbar-brand { color: var(--salon-paper); font-family: "Bodoni Moda", Georgia, serif; }
-.site-navbar .navbar-toggler { border-color: #95816b; }
+.site-navbar { background: #fff; }
+.site-navbar .nav-link { color: var(--salon-ink); font-size: .95rem; }
+.site-navbar .nav-link:hover, .site-navbar .nav-link.active { color: var(--salon-gold-dark); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .55em; }
+.site-navbar .navbar-brand { color: var(--salon-ink); font-family: "Bodoni Moda", Georgia, serif; }
+.site-navbar .navbar-toggler { border-color: var(--salon-muted); }
 .btn-salon { --bs-btn-color: var(--salon-deep); --bs-btn-bg: var(--salon-gold); --bs-btn-border-color: var(--salon-gold); --bs-btn-hover-color: var(--salon-deep); --bs-btn-hover-bg: #ebc893; --bs-btn-hover-border-color: #ebc893; --bs-btn-active-bg: #bd935e; --bs-btn-active-border-color: #bd935e; --bs-btn-focus-shadow-rgb: 210,174,122; font-weight: 600; border-radius: 0; padding: .75rem 1.3rem; }
 .btn-salon-outline { --bs-btn-color: var(--salon-ink); --bs-btn-border-color: var(--salon-ink); --bs-btn-hover-color: var(--salon-paper); --bs-btn-hover-bg: var(--salon-ink); --bs-btn-hover-border-color: var(--salon-ink); border-radius: 0; padding: .75rem 1.3rem; }
 .btn-salon-dark { --bs-btn-color: var(--salon-paper); --bs-btn-bg: var(--salon-deep); --bs-btn-border-color: var(--salon-deep); --bs-btn-hover-color: var(--salon-deep); --bs-btn-hover-bg: var(--salon-gold); --bs-btn-hover-border-color: var(--salon-gold); border-radius: 0; padding: .75rem 1.3rem; }
@@ -86,6 +85,7 @@ a { text-underline-offset: .22em; }
 .map-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
 .demo-note { font-size: .91rem; color: var(--salon-muted); }
 .contact-section .demo-note { color: #d4cabd; }
+.contact-section .demo-note a { color: #f1d2a2; }
 .contact-section + .site-footer { margin-top: 0 !important; }
 
 .page-hero { background: var(--salon-deep); color: var(--salon-paper); padding-block: clamp(4rem, 7vw, 7rem); }
@@ -140,6 +140,7 @@ a { text-underline-offset: .22em; }
 @keyframes photo-enter { from { opacity: .4; transform: scale(1.04); } to { opacity: 1; transform: scale(1); } }
 
 @media (max-width: 991.98px) {
+  .site-navbar .navbar-collapse { padding-top: 1rem; }
   .hero { min-height: auto; }
   .hero-copy { padding-bottom: 5rem; }
   .hero-photo { height: 460px; min-height: 0; }
