@@ -1,14 +1,11 @@
 const primaryMenu = document.querySelector("#siteMenu .navbar-nav");
 if (primaryMenu) {
-  const menuOrder = ["index.html", "masters.html", "catalog.html", "shop.html", "contacts.html"];
+  const menuOrder = ["index.html", "masters.html", "catalog.html", "shop.html", "about.html", "contacts.html"];
   const menuItems = [...primaryMenu.children];
   menuItems.sort((firstItem, secondItem) => {
     const firstPage = new URL(firstItem.querySelector("a").href).pathname.split("/").pop();
     const secondPage = new URL(secondItem.querySelector("a").href).pathname.split("/").pop();
-    const firstHref = firstItem.querySelector("a").hash ? "contacts.html#location-title" : firstPage;
-    const secondHref = secondItem.querySelector("a").hash ? "contacts.html#location-title" : secondPage;
-    const fullOrder = [...menuOrder, "contacts.html#location-title"];
-    return fullOrder.indexOf(firstHref) - fullOrder.indexOf(secondHref);
+    return menuOrder.indexOf(firstPage) - menuOrder.indexOf(secondPage);
   });
   menuItems.forEach((item) => primaryMenu.append(item));
 }
@@ -364,7 +361,8 @@ if (orderForm) {
 
 document.querySelectorAll(".site-navbar .nav-link").forEach((link) => {
   const currentPage = location.pathname.split("/").pop() || "index.html";
-  if (link.getAttribute("href") === currentPage) {
+  const linkPage = new URL(link.href).pathname.split("/").pop();
+  if (linkPage === currentPage) {
     link.classList.add("active");
     link.setAttribute("aria-current", "page");
   }
